@@ -140,7 +140,7 @@ public:
     const std::string& topic_name,
     const std::string& type_name,
     const std::string& schema,
-    PlotDataMapRef& data) override
+    PlotDataMapRef& data) override final
   {
     (void) type_name;
     (void) schema;
@@ -151,7 +151,7 @@ public:
       _checkbox_use_timestamp->isChecked(),
       timestamp_name);
   }
-  const char* encoding() const override
+  const char* encoding() const override final
   {
     return "JSON";
   }
@@ -164,7 +164,7 @@ public:
     const std::string& topic_name,
     const std::string& type_name,
     const std::string& schema,
-    PlotDataMapRef& data) override
+    PlotDataMapRef& data) override final
   {
     (void) type_name;
     (void) schema;
@@ -175,7 +175,7 @@ public:
       _checkbox_use_timestamp->isChecked(),
       timestamp_name);
   }
-  const char* encoding() const override
+  const char* encoding() const override final
   {
     return "CBOR";
   }
@@ -188,7 +188,7 @@ public:
     const std::string& topic_name,
     const std::string& type_name,
     const std::string& schema,
-    PlotDataMapRef& data) override
+    PlotDataMapRef& data) override final
   {
     (void) type_name;
     (void) schema;
@@ -199,7 +199,7 @@ public:
       _checkbox_use_timestamp->isChecked(),
       timestamp_name);
   }
-  const char* encoding() const override
+  const char* encoding() const override final
   {
     return "BSON";
   }
@@ -212,7 +212,7 @@ public:
     const std::string& topic_name,
     const std::string& type_name,
     const std::string& schema,
-    PlotDataMapRef& data) override
+    PlotDataMapRef& data) override final
   {
     (void) type_name;
     (void) schema;
@@ -223,7 +223,7 @@ public:
       _checkbox_use_timestamp->isChecked(),
       timestamp_name);
   }
-  const char* encoding() const override
+  const char* encoding() const override final
   {
     return "MessagePack";
   }
