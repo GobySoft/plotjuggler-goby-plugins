@@ -115,7 +115,7 @@ public:
 
 };
 
-class NlohmannParserCreator : public MessageParserCreator
+class NlohmannParserCreator : public ParserFactoryPlugin
 {
 public:
   NlohmannParserCreator()
@@ -136,15 +136,22 @@ protected:
 class JSON_ParserCreator : public NlohmannParserCreator
 {
 public:
-  MessageParserPtr createInstance(const std::string& topic_name,
-                                  PlotDataMapRef& data) override
+  MessageParserPtr createParser(
+    const std::string& topic_name,
+    const std::string& type_name,
+    const std::string& schema,
+    PlotDataMapRef& data) override
   {
+    (void) type_name;
+    (void) schema;
     std::string timestamp_name = _checkbox_use_timestamp->lineedit->text().toStdString();
-    return std::make_shared<JSON_Parser>(topic_name, data,
-                                         _checkbox_use_timestamp->isChecked(),
-                                         timestamp_name);
+    return std::make_shared<JSON_Parser>(
+      topic_name,
+      data,
+      _checkbox_use_timestamp->isChecked(),
+      timestamp_name);
   }
-  const char* name() const override
+  const char* encoding() const override
   {
     return "JSON";
   }
@@ -153,15 +160,22 @@ public:
 class CBOR_ParserCreator : public NlohmannParserCreator
 {
 public:
-  MessageParserPtr createInstance(const std::string& topic_name,
-                                  PlotDataMapRef& data) override
+  MessageParserPtr createParser(
+    const std::string& topic_name,
+    const std::string& type_name,
+    const std::string& schema,
+    PlotDataMapRef& data) override
   {
+    (void) type_name;
+    (void) schema;
     std::string timestamp_name = _checkbox_use_timestamp->lineedit->text().toStdString();
-    return std::make_shared<CBOR_Parser>(topic_name, data,
-                                         _checkbox_use_timestamp->isChecked(),
-                                         timestamp_name);
+    return std::make_shared<CBOR_Parser>(
+      topic_name,
+      data,
+      _checkbox_use_timestamp->isChecked(),
+      timestamp_name);
   }
-  const char* name() const override
+  const char* encoding() const override
   {
     return "CBOR";
   }
@@ -170,15 +184,22 @@ public:
 class BSON_ParserCreator : public NlohmannParserCreator
 {
 public:
-  MessageParserPtr createInstance(const std::string& topic_name,
-                                  PlotDataMapRef& data) override
+  MessageParserPtr createParser(
+    const std::string& topic_name,
+    const std::string& type_name,
+    const std::string& schema,
+    PlotDataMapRef& data) override
   {
+    (void) type_name;
+    (void) schema;
     std::string timestamp_name = _checkbox_use_timestamp->lineedit->text().toStdString();
-    return std::make_shared<BSON_Parser>(topic_name, data,
-                                         _checkbox_use_timestamp->isChecked(),
-                                         timestamp_name);
+    return std::make_shared<BSON_Parser>(
+      topic_name,
+      data,
+      _checkbox_use_timestamp->isChecked(),
+      timestamp_name);
   }
-  const char* name() const override
+  const char* encoding() const override
   {
     return "BSON";
   }
@@ -187,15 +208,22 @@ public:
 class MessagePack_ParserCreator : public NlohmannParserCreator
 {
 public:
-  MessageParserPtr createInstance(const std::string& topic_name,
-                                  PlotDataMapRef& data) override
+  MessageParserPtr createParser(
+    const std::string& topic_name,
+    const std::string& type_name,
+    const std::string& schema,
+    PlotDataMapRef& data) override
   {
+    (void) type_name;
+    (void) schema;
     std::string timestamp_name = _checkbox_use_timestamp->lineedit->text().toStdString();
-    return std::make_shared<MessagePack_Parser>(topic_name, data,
-                                                _checkbox_use_timestamp->isChecked(),
-                                                timestamp_name);
+    return std::make_shared<MessagePack_Parser>(
+      topic_name,
+      data,
+      _checkbox_use_timestamp->isChecked(),
+      timestamp_name);
   }
-  const char* name() const override
+  const char* encoding() const override
   {
     return "MessagePack";
   }
